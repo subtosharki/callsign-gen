@@ -1,0 +1,16 @@
+{
+  "name": "callsign-gen",
+  "version": "1.0.0",
+  "description": "a callsign generator for rp servers but made for exia",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "git+https://github.com/subtosharki/callsign-gen.git",
+  "author": "subtosharki",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/subtosharki/callsign-gen/issues"
+  },
+  "homepage": "https://github.com/subtosharki/callsign-gen#readme"
+}
