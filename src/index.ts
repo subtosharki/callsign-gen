@@ -1,7 +1,10 @@
-import type { deps } from './types'
+import type { deps, callsigns } from './types'
+import { GoogleSpreadsheet, type GoogleSpreadsheetWorksheet } from 'google-spreadsheet'
 
 export default class {
-    private readonly fronts: { [key: deps]: string };
+    private readonly fronts: { [key: deps]: callsigns };
+    private readonly doc: GoogleSpreadsheet;
+    private readonly sheets: { [key: deps]: GoogleSpreadsheetWorksheet };
     constructor() {
         this.fronts = {
             cadet: 'Cadet-',
@@ -14,9 +17,26 @@ export default class {
             fire: '5-T-',
             civ: 'Civ-'
         }
+        this.doc = new GoogleSpreadsheet();
+        this.sheets = {
+            cadet: this.doc.sheetsByTitle['Cadet'],
+            supervisors: this.doc.sheetsByTitle['Supervisor'],
+            depHeads: this.doc.sheetsByTitle['Supervisor'],
+            sahp: this.doc.sheetsByTitle['SAHP'],
+            bcso: this.doc.sheetsByTitle['LCSO'],
+            lspd: this.doc.sheetsByTitle['LSPD'],
+            dispatch: this.doc.sheetsByTitle['Dispatch'],
+            fire: this.doc.sheetsByTitle['San Andreas fire rescue'],
+            civ: this.doc.sheetsByTitle['Civilian']
+        }
     }
+    private async loadSheet() {
+        await this.doc.loadInfo();
+    }
+
     private async getAvaliableCallsigns(dep: deps) {
         //get the callsigns that are avaliable from the sheet
+
     }
 
     private async generatecallsign(dep: deps) {
